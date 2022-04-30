@@ -26,8 +26,8 @@ function removeKFromList(l, k) {
   throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
 
-    let newArray = l.filter(function(f) { return f !== k })
-    return newArray;
+    // let newArray = l.filter(function(f) { return f !== k })
+    // return newArray;
 
 }
 // console.log(removeKFromList([3, 1, 2, 3, 4, 5],3))
