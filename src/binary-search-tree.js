@@ -7,32 +7,58 @@ const { Node } = require('../extensions/list-tree.js');
 * using Node from extensions
 */
 class BinarySearchTree {
-
+  constructor(){
+    this.rooot = null;
+  }
   root() {
-    this.root = null;
+    return this.rooot;
   }
 
   add(data) {
     //throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
-    this.root = addWithin(this.root, data);
+    // Creating a node and initialising
+    // with data
+    var newNode = new Node(data);
+                     
+    // root is null then node will
+    // be added to the tree and made root.
+    if(this.rooot === null)
+        this.rooot = newNode;
+    else
+ 
+        // find the correct position in the
+        // tree and add the node
+    this.insertNode(this.rooot, newNode);
+  }
 
-    function addWithin(node, data) {
-      if (!node) {
-        return new Node(data);
-      }
-
-      if (node.data === data) {
-        return node;
-      }
-
-      if (data < node.data) {
-        node.left = addWithin(node.left, data);
-      } else {
-        node.right = addWithin(node.right, data);
-      }
-
-      return node;
+  insertNode(node, newNode){
+    // if the data is less than the node
+    // data move left of the tree
+    if(newNode.data < node.data)
+    {
+        // if left is null insert node here
+        if(node.left === null)
+            node.left = newNode;
+        else
+ 
+            // if left is not null recur until
+            // null is found
+            this.insertNode(node.left, newNode);
+    }
+ 
+    // if the data is more than the node
+    // data move right of the tree
+    else
+    {
+        // if right is null insert node here
+        if(node.right === null)
+            node.right = newNode;
+        else
+ 
+            // if right is not null recur until
+            // null is found
+            this.insertNode(node.right,newNode);
     }
   }
 
@@ -63,6 +89,8 @@ class BinarySearchTree {
 }
 
 const tree = new BinarySearchTree();
+
+// tree.root();
 
 module.exports = {
   BinarySearchTree
